@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEasy - অনলাইন শপিং</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <span>📞 ০১২৩৪৫৬৭৮৯০</span>
+                <span>🏠 তিনদিনে ফ্রি ডেলিভারি</span>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container nav-content">
+                <div class="logo">🛒 ShopEasy</div>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="🔍 পণ্য খুঁজুন...">
+                    <button onclick="searchProducts()">সার্চ</button>
+                </div>
+                <div class="nav-icons">
+                    <button onclick="showCart()">
+                        🛒 কার্ট <span id="cartCount">0</span>
+                    </button>
+                    <button onclick="showLogin()">👤 লগইন</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>🏠 ফ্রি ডেলিভারি তিনদিনে!</h1>
+            <p>সব প্রোডাক্টে ১০০% জেনুইন</p>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <div class="container">
+            <h2>ক্যাটাগরি</h2>
+            <div class="category-grid">
+                <div class="category-item" onclick="filterCategory('electronics')">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>মোবাইল</span>
+                </div>
+                <div class="category-item" onclick="filterCategory('laptop')">
+                    <i class="fas fa-laptop"></i>
+                    <span>ল্যাপটপ</span>
+                </div>
+                <div class="category-item" onclick="filterCategory('clothing')">
+                    <i class="fas fa-tshirt"></i>
+                    <span>কাপড়</span>
+                </div>
+                <div class="category-item" onclick="filterCategory('shoes')">
+                    <i class="fas fa-shoe-prints"></i>
+                            <span>জুতা</span>
+                </div>
+                <div class="category-item" onclick="filterCategory('beauty')">
+                    <i class="fas fa-spa"></i>
+                    <span>সৌন্দর্য</span>
+                </div>
+                <div class="category-item" onclick="filterCategory('all')">
+                    <i class="fas fa-th"></i>
+                    <span>সব</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products">
+        <div class="container">
+            <h2>🔥 জনপ্রিয় প্রোডাক্ট</h2>
+            <div class="product-grid" id="productGrid">
+                <!-- Products will be added by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🛒 আমার কার্ট</h2>
+                <button class="close-btn" onclick="closeCart()">✕</button>
+            </div>
+            <div class="modal-body" id="cartItems">
+                <!-- Cart items will be added here -->
+            </div>
+            <div class="modal-footer">
+                <h3>মোট: ৳<span id="totalPrice">0</span></h3>
+                <button class="checkout-btn" onclick="checkout()">✓ চেকআউট করুন</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>👤 লগইন / রেজিস্ট্রেশন</h2>
+                <button class="close-btn" onclick="closeLogin()">✕</button>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="handleLogin(event)">
+                    <input type="text" placeholder="📱 ফোন নম্বর" required>
+                    <input type="password" placeholder="🔐 পাসওয়ার্ড" required>
+                    <button type="submit" class="login-btn">লগইন</button>
+                    <p>অ্যাকাউন্ট নেই? <a href="#">রেজিস্ট্রেশন করুন</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>ShopEasy</h3>
+                    <p>বাংলাদেশের সবচেয়ে বিশ্বস্ত অনলাইন শপ!</p>
+                </div>
+                <div>
+                    <h3>যোগাযোগ</h3>
+                    <p>📞 ০১২৩৪৫৬৭৮৯০</p>
+                    <p>✉️ support@shopeasy.com</p>
+                    <p>📍 ঢাকা, বাংলাদেশ</p>
+                </div>
+                <div>
+                    <h3>লিংক</h3>
+                    <p><a href="#">আমাদের সম্পর্কে</a></p>
+                    <p><a href="#">শর্তাবলী</a></p>
+                    <p><a href="#">গোপনীয়তা নীতি</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 ShopEasy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+  </html>
