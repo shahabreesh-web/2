@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopEasy - অনলাইন শপিং</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <span>📞 ০১২৩৪৫৬৭৮৯০</span>
+                <span>🏠 তিনদিনে ফ্রি ডেলিভারি</span>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container nav-content">
+                <div class="logo" onclick="window.location.reload()">🛒 ShopEasy</div>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="🔍 পণ্য খুঁজুন..." onkeyup="searchProducts()">
+                </div>
+                <div class="nav-icons">
+                    <button onclick="showWishlist()">❤️ উইশলিস্ট <span id="wishlistCount">0</span></button>
+                    <button onclick="showCart()">🛒 কার্ট <span id="cartCount">0</span></button>
+                    <button onclick="showLogin()">👤 লগইন</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Slider -->
+    <div class="slider" id="sliderContainer"></div>
+
+    <!-- Deals Section -->
+    <section class="deals-section">
+        <div class="container">
+            <h2>🔥 আজকের ডিল</h2>
+            <div class="product-grid" id="dealGrid"></div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-box">
+                <select id="categoryFilter" onchange="applyFilters()">
+                    <option value="all">সব ক্যাটাগরি</option>
+                    <option value="electronics">মোবাইল</option>
+                    <option value="laptop">ল্যাপটপ</option>
+                    <option value="clothing">কাপড়</option>
+                    <option value="shoes">জুতা</option>
+                    <option value="beauty">সৌন্দর্য</option>
+                </select>
+                <input type="number" id="minPrice" placeholder="মিন দাম" onchange="applyFilters()">
+                <input type="number" id="maxPrice" placeholder="ম্যাক্স দাম" onchange="applyFilters()">
+                <select id="sortBy" onchange="applyFilters()">
+                    <option value="default">সর্ট করুন</option>
+                    <option value="price-low">দাম: কম থেকে বেশি</option>
+                    <option value="price-high">দাম: বেশি থেকে কম</option>
+                    <option value="rating">রেটিং</option>
+                    <option value="discount">ছাড়</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <div class="container">
+            <h2>ক্যাটাগরি</h2>
+            <div class="category-grid">
+                <div class="category-item" onclick="filterCategory('electronics')">📱<br>মোবাইল</div>
+                <div class="category-item" onclick="filterCategory('laptop')">💻<br>ল্যাপটপ</div>
+                <div class="category-item" onclick="filterCategory('clothing')">👕<br>কাপড়</div>
+                <div class="category-item" onclick="filterCategory('shoes')">👟<br>জুতা</div>
+                <div class="category-item" onclick="filterCategory('beauty')">💄<br>সৌন্দর্য</div>
+                <div class="category-item" onclick="filterCategory('all')">📦<br>সব</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products">
+        <div class="container">
+            <h2>সব প্রোডাক্ট</h2>
+            <div class="product-grid" id="productGrid"></div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>📧 নিউজলেটার সাইন আপ</h2>
+            <p>অফার ও নতুন প্রোডাক্টের আপডেট পেতে সাইন আপ করুন!</p>
+            <form onsubmit="handleNewsletter(event)">
+                <input type="email" placeholder="আপনার ইমেইল" required>
+                <button type="submit">সাইন আপ</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Call Now Floating Button -->
+    <a href="tel:01234567890" class="call-now-btn">📞 এখনই কল করুন</a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>ShopEasy</h3>
+                    <p>বাংলাদেশের সবচেয়ে বিশ্বস্ত অনলাইন শপ!</p>
+                </div>
+                <div>
+                    <h3>যোগাযোগ</h3>
+                    <p>📞 ০১২৩৪৫৬৭৮৯০</p>
+                    <p>✉️ support@shopeasy.com</p>
+                    <p>📍 ঢাকা, বাংলাদেশ</p>
+                </div>
+                <div>
+                    <h3>লিংক</h3>
+                    <p><a href="#">আমাদের সম্পর্কে</a></p>
+                    <p><a href="#">শর্তাবলী</a></p>
+                    <p><a href="#">গোপনীয়তা নীতি</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 ShopEasy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🛒 আমার কার্ট</h2>
+                <button class="close-btn" onclick="closeCart()">✕</button>
+            </div>
+            <div class="modal-body" id="cartItems"></div>
+            <div class="modal-footer">
+                <h3>মোট: ৳<span id="totalPrice">0</span></h3>
+                <button class="checkout-btn" onclick="checkout()">✓ চেকআউট করুন</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wishlist Modal -->
+    <div class="modal" id="wishlistModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>❤️ উইশলিস্ট</h2>
+                <button class="close-btn" onclick="closeWishlist()">✕</button>
+            </div>
+            <div class="modal-body" id="wishlistItems"></div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>👤 লগইন</h2>
+                <button class="close-btn" onclick="closeLogin()">✕</button>
+            </div>
+            <div class="modal-body">
+                <form onsubmit="handleLogin(event)">
+                    <input type="text" placeholder="📱 ফোন নম্বর" required>
+                    <input type="password" placeholder="🔐 পাসওয়ার্ড" required>
+                    <button type="submit" class="login-btn">লগইন</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+  </html>
